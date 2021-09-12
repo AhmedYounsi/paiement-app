@@ -3,6 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import Login from './screens/Auth/Login';
+import NotLogged from './screens/Auth/NotLogged';
+import Register from './screens/Auth/Register';
+
+
 
 export default function App() {
 
@@ -20,7 +24,7 @@ export default function App() {
   return (
     
     <>
-     <Login />
+     <NotLogged />
     </>
     // <View style={styles.container}>
      

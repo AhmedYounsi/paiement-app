@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 import {
   Button,
   Image,
@@ -10,7 +12,7 @@ import {
   CheckBox,
 } from "react-native";
 
-function Login() {
+function Login(props) {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Selection, setSelection] = useState(false);
@@ -31,7 +33,7 @@ function Login() {
         />
         <Text style={styles.loginTitle}> connectez vous </Text>
         <TextInput
-          placeholder="enter votre identifiant"
+          placeholder="Entrer votre identifiant"
           placeholderTextColor="#737373"
           value={Email}
           style={styles.input}
@@ -39,7 +41,7 @@ function Login() {
         />
         <TextInput
         secureTextEntry={true} 
-          placeholder="enter votre mot de passe"
+          placeholder="Entrer votre mot de passe"
           placeholderTextColor="#737373"
           value={Password}
           style={styles.input}
@@ -59,10 +61,19 @@ function Login() {
 
         <TouchableOpacity style={styles.loginScreenButton}>
           <Text adjustsFontSizeToFit={true} style={styles.loginText}>
-            Continuer
+          <MaterialIcons style={styles.loginicon}  name="login" size={30} color="white" />
+            Login
           </Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.footerAuth}>
+          <TouchableOpacity onPress={() => props.to_register()}>
+            <Text style={styles.footerAuthText1}>S'inscrire ?</Text>
+          </TouchableOpacity>
+          <Text style={styles.footerAuthText2}>
+            Développer par SOFIAVERA
+          </Text>
+        </View>
     </View>
   );
 }
@@ -70,6 +81,30 @@ function Login() {
 export default Login;
 
 const styles = StyleSheet.create({
+  loginicon:{
+   marginRight:10,
+   marginTop:2
+  },  
+  footerAuth: {
+    marginTop: 10,
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+  },
+  footerAuthText1: {
+    fontWeight: "400",
+    textDecorationLine: "underline",
+    paddingLeft: 10,
+  },
+  footerAuthText2: {
+    fontWeight: "400",
+    position: "absolute",
+    right: 10,
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -89,7 +124,7 @@ const styles = StyleSheet.create({
   loginTitle: {
     marginVertical: 10,
     fontSize: 20,
-    fontWeight: "500",
+    fontWeight: "900",
     color: "#404040",
   },
   tinyLogo: {
@@ -125,8 +160,11 @@ const styles = StyleSheet.create({
     width: 200,
   },
   loginText: {
+    marginTop:-3,
     color: "#fff",
-    textAlign: "center",
+display:'flex',
+alignItems:'center',
+justifyContent:'center',
     paddingLeft: 10,
     paddingRight: 10,
     fontSize: 22,
