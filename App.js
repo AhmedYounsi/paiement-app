@@ -1,8 +1,9 @@
 import axios from "axios";
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+ 
+import { Button, Image, StatusBar, StyleSheet, Text, View } from "react-native";
 import Login from "./screens/Auth/Login";
 import NotLogged from "./screens/Auth/NotLogged";
 import Register from "./screens/Auth/Register";
@@ -58,6 +59,8 @@ export default function App() {
 
    const Logged = () => {
      return (
+       <>
+         <StatusBar backgroundColor="blue" barStyle="light-content" />
       <NavigationContainer>
       <Drawer.Navigator
         screenOptions={{
@@ -67,40 +70,40 @@ export default function App() {
         }}
         drawerContent={(props) => <CustomDrawer {...props} />}
         initialRouteName="Home"
-      >
+        >
         <Drawer.Screen
           options={{
             drawerLabelStyle:{
-          
+              
             },
             drawerActiveTintColor: "#233460",
             drawerActiveBackgroundColor: "#eaeaea",
             drawerIcon: ({ focused, size }) => (
               <MaterialIcons
-                name="payment"
+              name="payment"
                 size={30}
                 color={focused ? "#233460" : "#233460"}
               />
-            ),
-          }}
+              ),
+            }}
           name="Paiement"
           component={Home}
-        />
+          />
         <Drawer.Screen
           options={{
             drawerActiveTintColor: "#233460",
             drawerActiveBackgroundColor: "#eaeaea",
             drawerIcon: ({ focused, size }) => (
               <Feather
-                name="user"
-                size={30}
+              name="user"
+              size={30}
                 color={focused ? "#233460" : "#233460"}
-              />
-            ),
-          }}
+                />
+                ),
+              }}
           name="Profile"
           component={Profile}
-        />
+          />
         <Drawer.Screen
           options={{
             drawerStyle: { fontSize: 40 },
@@ -111,14 +114,15 @@ export default function App() {
                 name="history"
                 size={30}
                 color={focused ? "#233460" : "#233460"}
-              />
-            ),
-          }}
+                />
+                ),
+              }}
           name="Historique"
           component={Historique}
         />
       </Drawer.Navigator>
     </NavigationContainer>
+          </>
      )
    }
 
